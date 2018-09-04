@@ -1,13 +1,13 @@
 <?php
 
 include 'clases/conexion.php';
-include 'clases/usuario.php';
+include 'clases/producto.php';
 
 $objConexion = new conexion();
-$objUsuario = new usuario();
+$objProducto = new Producto();
 
 $conexion = $objConexion->conectar();
-$datos = $objUsuario->consultaId($conexion, $_GET['id']);
+$datos = $objProducto->consultaId($conexion, $_GET['id']);
 
 $id;
 $nombre;

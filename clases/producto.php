@@ -1,10 +1,9 @@
 <?php
 
-class Usuario {
+class Producto {
 
     public function registrar($conexion, $nombre, $descripcion, $codigo, $valorUnitario){
-        $query = "INSERT INTO producto (nombre, descripcion, codigo, valorUnitario)
-        VALUES ('$nombre','$descripcion','$codigo','$valorUnitario');";
+        $query = "CALL crear_producto('$nombre','$descripcion','$codigo','$valorUnitario');";
         $consulta = mysqli_query($conexion, $query);
         if ($consulta){
             $respuesta = "Producto registrado";
@@ -16,20 +15,19 @@ class Usuario {
     }
 
     public function consultar($conexion){
-        $query = "SELECT * FROM producto;";
+        $query = "CALL consultar_producto";
         $consulta = mysqli_query($conexion, $query);
         return $consulta;
     }
 
     public function consultaId($conexion, $id){
-        $query = "SELECT * FROM producto WHERE id = $id";
+        $query = "CALL consultar_producto_id('$id')";
         $consulta = mysqli_query($conexion, $query);
         return $consulta;
     }
 
     public function actualizarId($conexion, $id, $nombre, $descripcion, $codigo, $valorUnitario){
-        $query = "UPDATE producto SET nombre = '$nombre', descripcion = '$descripcion', 
-        codigo = '$codigo', valorUnitario = '$valorUnitario' WHERE id = '$id' ;";
+        $query = "CALL actualizar_id('$id','$nombre','$descripcion','$codigo','$valorUnitario');";
         $consulta = mysqli_query($conexion, $query);
         if ($consulta){
             $respuesta = "Producto actualizado";
@@ -41,7 +39,7 @@ class Usuario {
     }
 
     public function eliminarId($conexion, $id){
-        $query = "DELETE from producto WHERE id = '$id';";
+        $query = "CALL eliminar_id('$id');";
         $consulta = mysqli_query($conexion, $query);
         if ($consulta){
             $respuesta = "Producto eliminado";

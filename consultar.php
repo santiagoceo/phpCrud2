@@ -1,12 +1,12 @@
 <?php
     include 'clases/conexion.php';
-    include 'clases/usuario.php';
+    include 'clases/producto.php';
 
     $objConexion = new Conexion();
-    $objUsuario = new Usuario();
+    $objProducto = new Producto();
 
     $conexion = $objConexion->conectar();
-    $datos = $objUsuario->consultar($conexion);
+    $datos = $objProducto->consultar($conexion);
 ?>
 <!DOCTYPE html>
 <html lang="en">
